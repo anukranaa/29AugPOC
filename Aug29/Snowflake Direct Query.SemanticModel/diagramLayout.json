@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 74.814977973568233
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 488,
+            "y": 0
+          },
+          "nodeIndex": "LINEITEM",
+          "nodeLineageTag": "1bde5622-9485-44a6-98d0-3c14bfcdb02a",
+          "size": {
+            "height": 479,
+            "width": 272
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 211,
+            "y": 441
+          },
+          "nodeIndex": "CUSTOMER",
+          "nodeLineageTag": "a195a60c-a9fe-45bf-b253-8ad5229505c4",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 95,
+            "y": 19
+          },
+          "nodeIndex": "ORDERS",
+          "nodeLineageTag": "08476aff-2fbb-4916-894d-85651d423b0d",
+          "size": {
+            "height": 319,
+            "width": 217
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 927,
+            "y": 291
+          },
+          "nodeIndex": "SUPPLIER",
+          "nodeLineageTag": "4ddafba7-2748-4b2d-b75d-0f7c7f66a07f",
+          "size": {
+            "height": 243,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 72.178060413354586,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

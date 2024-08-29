@@ -1,0 +1,154 @@
+table ORDERS
+	lineageTag: 08476aff-2fbb-4916-894d-85651d423b0d
+
+	measure 'Total Price F' = CALCULATE(sum(ORDERS[O_TOTALPRICE]), ORDERS[O_ORDERSTATUS] = "F")
+		lineageTag: a654dbd8-4924-4bbb-b2ad-3330720939d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Price O' = ```
+			CALCULATE(sum(ORDERS[O_TOTALPRICE]), ORDERS[O_ORDERSTATUS] = "O")
+			
+			```
+		lineageTag: b0693d3a-fb3c-4de5-a6ae-11f843e85203
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Price P' = ```
+			CALCULATE(sum(ORDERS[O_TOTALPRICE]), ORDERS[O_ORDERSTATUS] = "P")
+			
+			```
+		lineageTag: b0f42d50-9c48-485a-be40-82b0656d694a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Order Amount' = [Total Price F] + [Total Price O] + [Total Price P]
+		lineageTag: c9230183-9018-40cf-b257-aed1bdd0118c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Order Priority' =
+			
+			VAR StartDate = DATE(1993, 7, 1)
+			VAR EndDate = StartDate + 3 * MONTH(1)
+			VAR RelevantOrders =
+			    FILTER (
+			        'orders',
+			        'orders'[o_orderdate] >= StartDate &&
+			        'orders'[o_orderdate] < EndDate &&
+			        CALCULATE (
+			            COUNTROWS('lineitem'),
+			            'lineitem'[l_commitdate] < 'lineitem'[l_receiptdate]
+			        ) > 0
+			    )
+			RETURN
+			COUNTROWS(SUMMARIZE(RelevantOrders, 'orders'[o_orderkey]))
+			//The Order Priority Checking Query counts the number of orders ordered in a given quarter of a given year in which at least one lineitem was received by the customer later than its committed date.
+		formatString: 0
+		lineageTag: 13e81f03-fff6-4dda-8e8c-e43398566e63
+
+	column O_ORDERKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: b6974594-90ba-43c9-a346-f6c3dd5c1175
+		summarizeBy: none
+		sourceColumn: O_ORDERKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column O_CUSTKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 649f9e31-a74b-4854-900c-5f901c936770
+		summarizeBy: none
+		sourceColumn: O_CUSTKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column O_ORDERSTATUS
+		dataType: string
+		sourceProviderType: nvarchar(1)
+		lineageTag: 896fe483-8a60-4827-992b-58d23a5d091e
+		summarizeBy: none
+		sourceColumn: O_ORDERSTATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column O_TOTALPRICE
+		dataType: double
+		sourceProviderType: decimal(12, 2)
+		lineageTag: d5a9018e-117b-45f5-8e97-c07ba8d62993
+		summarizeBy: sum
+		sourceColumn: O_TOTALPRICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column O_ORDERDATE
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: b8d33274-21a7-40a8-843a-34502a157c93
+		summarizeBy: none
+		sourceColumn: O_ORDERDATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column O_ORDERPRIORITY
+		dataType: string
+		sourceProviderType: nvarchar(15)
+		lineageTag: 224e59e7-2463-4ee8-b18b-ebe4abea5ae8
+		summarizeBy: none
+		sourceColumn: O_ORDERPRIORITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column O_CLERK
+		dataType: string
+		sourceProviderType: nvarchar(15)
+		lineageTag: ca062c83-f163-44f7-bdfe-42b2e5ab404d
+		summarizeBy: none
+		sourceColumn: O_CLERK
+
+		annotation SummarizationSetBy = Automatic
+
+	column O_SHIPPRIORITY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: fd92df9f-329e-4ae0-ba11-6afeacb65b2f
+		summarizeBy: sum
+		sourceColumn: O_SHIPPRIORITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column O_COMMENT
+		dataType: string
+		sourceProviderType: nvarchar(79)
+		lineageTag: 0b23f0c9-2592-4516-a8b6-e0959c6fbac9
+		summarizeBy: none
+		sourceColumn: O_COMMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ORDERS = m
+		mode: directQuery
+		source =
+				let
+				    Source = Snowflake.Databases("xb96395.west-us-2.azure.snowflakecomputing.com","Public_WH"),
+				    SNOWFLAKE_MIRRORING_DEMO_Database = Source{[Name="SNOWFLAKE_MIRRORING_DEMO",Kind="Database"]}[Data],
+				    SALES_Schema = SNOWFLAKE_MIRRORING_DEMO_Database{[Name="SALES",Kind="Schema"]}[Data],
+				    ORDERS_Table = SALES_Schema{[Name="ORDERS",Kind="Table"]}[Data]
+				in
+				    ORDERS_Table
+
+	annotation PBI_ResultType = Table
+

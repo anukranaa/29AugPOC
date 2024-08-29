@@ -1,0 +1,37 @@
+DEFINE
+
+MEASURE 'ORDERS'[Total Price F] = CALCULATE(sum(ORDERS[O_TOTALPRICE]), ORDERS[O_ORDERSTATUS] = "F")
+
+MEASURE 'ORDERS'[Total Price O] = CALCULATE(sum(ORDERS[O_TOTALPRICE]), ORDERS[O_ORDERSTATUS] = "O")
+
+MEASURE 'ORDERS'[Total Price P] = CALCULATE(sum(ORDERS[O_TOTALPRICE]), ORDERS[O_ORDERSTATUS] = "P")
+
+MEASURE 'ORDERS'[Total Order Amount] = [Total Price F] + [Total Price O] + [Total Price P]
+
+VAR __DS0Core =
+
+SUMMARIZECOLUMNS(
+
+ROLLUPADDISSUBTOTAL('ORDERS'[O_CLERK], "IsGrandTotalRowTotal"),
+
+"Total_Price__F_", 'ORDERS'[Total Price F],
+
+"Total_Price__O_", 'ORDERS'[Total Price O],
+
+"Total_Price__P_", 'ORDERS'[Total Price P],
+
+"Total_Order_Price", 'ORDERS'[Total Order Amount]
+
+)
+
+VAR __DS0PrimaryWindowed =
+
+TOPN(502, __DS0Core, [IsGrandTotalRowTotal], 0, 'ORDERS'[O_CLERK], 1)
+
+EVALUATE
+
+__DS0PrimaryWindowed
+
+ORDER BY
+
+[IsGrandTotalRowTotal] DESC, 'ORDERS'[O_CLERK]

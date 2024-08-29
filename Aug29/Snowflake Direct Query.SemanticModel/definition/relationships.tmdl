@@ -1,0 +1,14 @@
+relationship 54b6bcba-4373-4d12-b18f-5e4cf1feba7f
+	fromColumn: LINEITEM.L_ORDERKEY
+	toColumn: ORDERS.O_ORDERKEY
+
+relationship 3647eec9-407d-4f8d-ad23-0b07f86a2fca
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: LINEITEM.L_SUPPKEY
+	toColumn: SUPPLIER.S_SUPPKEY
+
+relationship 5d008d07-36e0-4df6-9a61-c36311dac1ab
+	fromColumn: ORDERS.O_CUSTKEY
+	toColumn: CUSTOMER.C_CUSTKEY
+

@@ -1,0 +1,94 @@
+table CUSTOMER
+	lineageTag: a195a60c-a9fe-45bf-b253-8ad5229505c4
+
+	column C_CUSTKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: e9df3aa3-6666-4a5a-b2d6-33b405aa8ba5
+		summarizeBy: none
+		sourceColumn: C_CUSTKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column C_NAME
+		dataType: string
+		sourceProviderType: nvarchar(25)
+		lineageTag: 5df254d8-0760-4116-8054-7d0a415eca9a
+		summarizeBy: none
+		sourceColumn: C_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_ADDRESS
+		dataType: string
+		sourceProviderType: nvarchar(40)
+		lineageTag: 631725bd-9197-4323-991f-6eb7c2aae850
+		summarizeBy: none
+		sourceColumn: C_ADDRESS
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_NATIONKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 759d3703-f4dc-44b4-bb2f-a3fa2cfabffc
+		summarizeBy: none
+		sourceColumn: C_NATIONKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column C_PHONE
+		dataType: string
+		sourceProviderType: nvarchar(15)
+		lineageTag: 08ea9b1c-4c79-49e0-a670-1b4c3842cb22
+		summarizeBy: none
+		sourceColumn: C_PHONE
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_ACCTBAL
+		dataType: double
+		sourceProviderType: decimal(12, 2)
+		lineageTag: f3c6cff5-908f-445f-b5b5-fa3f8193b432
+		summarizeBy: none
+		sourceColumn: C_ACCTBAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column C_MKTSEGMENT
+		dataType: string
+		sourceProviderType: nvarchar(10)
+		lineageTag: bc506510-8d8c-4bfb-a5e5-128de05da1cc
+		summarizeBy: none
+		sourceColumn: C_MKTSEGMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column C_COMMENT
+		dataType: string
+		sourceProviderType: nvarchar(117)
+		lineageTag: 6ee464cc-5b35-48ec-bf33-b13e2efdc4e6
+		summarizeBy: none
+		sourceColumn: C_COMMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CUSTOMER = m
+		mode: directQuery
+		source =
+				let
+				    Source = Snowflake.Databases("xb96395.west-us-2.azure.snowflakecomputing.com","Public_WH"),
+				    SNOWFLAKE_MIRRORING_DEMO_Database = Source{[Name="SNOWFLAKE_MIRRORING_DEMO",Kind="Database"]}[Data],
+				    SALES_Schema = SNOWFLAKE_MIRRORING_DEMO_Database{[Name="SALES",Kind="Schema"]}[Data],
+				    CUSTOMER_Table = SALES_Schema{[Name="CUSTOMER",Kind="Table"]}[Data]
+				in
+				    CUSTOMER_Table
+
+	annotation PBI_ResultType = Table
+
