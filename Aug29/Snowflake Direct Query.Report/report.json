@@ -1,6 +1,5 @@
 {
-  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU02\",\"version\":\"5.51\",\"type\":2}},\"activeSectionIndex\":3,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
-  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU02\",\"version\":\"5.51\",\"type\":2}},\"activeSectionIndex\":3,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU02\",\"version\":\"5.51\",\"type\":2}},\"activeSectionIndex\":1,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "publicCustomVisuals": [],
   "resourcePackages": [
@@ -133,6 +132,15 @@
       "ordinal": 1,
       "visualContainers": [
         {
+          "config": "{\"name\":\"04adcd1090015560cd61\",\"layouts\":[{\"id\":0,\"position\":{\"x\":878.9218328840971,\"y\":420.05390835579516,\"z\":11001,\"width\":381.2398921832884,\"height\":239.7843665768194,\"tabOrder\":10001}}],\"singleVisual\":{\"visualType\":\"azureMap\",\"projections\":{\"Category\":[{\"queryRef\":\"SUPPLIER.S_NATIONKEY\",\"active\":true}],\"Size\":[{\"queryRef\":\"Sum(LINEITEM.L_TAX)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SUPPLIER\",\"Type\":0},{\"Name\":\"l\",\"Entity\":\"LINEITEM\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"S_NATIONKEY\"},\"Name\":\"SUPPLIER.S_NATIONKEY\",\"NativeReferenceName\":\"S_NATIONKEY\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_TAX\"}},\"Function\":0},\"Name\":\"Sum(LINEITEM.L_TAX)\",\"NativeReferenceName\":\"Sum of L_TAX\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}]},\"vcObjects\":{}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 239.78,
+          "width": 381.24,
+          "x": 878.92,
+          "y": 420.05,
+          "z": 11001.00
+        },
+        {
           "config": "{\"name\":\"2046e0e757607f772efc\",\"layouts\":[{\"id\":0,\"position\":{\"width\":1160,\"height\":240,\"x\":60,\"y\":172,\"tabOrder\":3000,\"z\":4000}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"LINEITEM.L_SHIPDATE\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(LINEITEM.L_QUANTITY)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"LINEITEM\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_SHIPDATE\"},\"Name\":\"LINEITEM.L_SHIPDATE\",\"NativeReferenceName\":\"L_SHIPDATE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_QUANTITY\"}},\"Function\":0},\"Name\":\"Sum(LINEITEM.L_QUANTITY)\",\"NativeReferenceName\":\"Sum of L_QUANTITY\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_SHIPDATE\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}]},\"vcObjects\":{}},\"howCreated\":\"Copilot\"}",
           "filters": "[]",
           "height": 240.00,
@@ -214,7 +222,7 @@
           "z": 0.00
         },
         {
-          "config": "{\"name\":\"d4dc9520769ccbeef4eb\",\"layouts\":[{\"id\":0,\"position\":{\"width\":381,\"height\":240,\"x\":60,\"y\":420,\"tabOrder\":2000,\"z\":3000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Category\":[{\"queryRef\":\"LINEITEM.L_RETURNFLAG\",\"active\":true}],\"Y\":[{\"queryRef\":\"Avg(LINEITEM.L_DISCOUNT)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"LINEITEM\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_RETURNFLAG\"},\"Name\":\"LINEITEM.L_RETURNFLAG\",\"NativeReferenceName\":\"L_RETURNFLAG\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_DISCOUNT\"}},\"Function\":1},\"Name\":\"Avg(LINEITEM.L_DISCOUNT)\",\"NativeReferenceName\":\"Average of L_DISCOUNT\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_DISCOUNT\"}},\"Function\":1}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}]},\"vcObjects\":{}},\"howCreated\":\"Copilot\"}",
+          "config": "{\"name\":\"d4dc9520769ccbeef4eb\",\"layouts\":[{\"id\":0,\"position\":{\"width\":381,\"height\":240,\"x\":60,\"y\":420,\"tabOrder\":2000,\"z\":3000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Category\":[{\"queryRef\":\"LINEITEM.L_RETURNFLAG\",\"active\":true}],\"Y\":[{\"queryRef\":\"Avg(LINEITEM.L_DISCOUNT)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"LINEITEM\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_RETURNFLAG\"},\"Name\":\"LINEITEM.L_RETURNFLAG\",\"NativeReferenceName\":\"L_RETURNFLAG\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_DISCOUNT\"}},\"Function\":1},\"Name\":\"Avg(LINEITEM.L_DISCOUNT)\",\"NativeReferenceName\":\"Viren\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_DISCOUNT\"}},\"Function\":1}}}]},\"columnProperties\":{\"Avg(LINEITEM.L_DISCOUNT)\":{\"displayName\":\"Viren\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":6,\"Percent\":0.2}}}}}}}]},\"vcObjects\":{}},\"howCreated\":\"Copilot\"}",
           "filters": "[]",
           "height": 240.00,
           "width": 381.00,
@@ -262,16 +270,16 @@
       "filters": "[]",
       "height": 720.00,
       "name": "c7a03cae99522033b9c9",
-      "ordinal": 3,
+      "ordinal": 4,
       "visualContainers": [
         {
-          "config": "{\"name\":\"03042b918b6bcc6690d1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":95.74123989218329,\"y\":333.80053908355796,\"z\":1,\"width\":396.7654986522911,\"height\":342.4258760107817,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Y\":[{\"queryRef\":\"ORDERS.Total Price O\"}],\"Category\":[{\"queryRef\":\"ORDERS.O_ORDERDATE\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"o\",\"Entity\":\"ORDERS\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"Total Price O\"},\"Name\":\"ORDERS.Total Price O\",\"NativeReferenceName\":\"Total Price O\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"O_ORDERDATE\"},\"Name\":\"ORDERS.O_ORDERDATE\",\"NativeReferenceName\":\"O_ORDERDATE\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"O_ORDERDATE\"}}}]},\"autoSelectVisualType\":false,\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "config": "{\"name\":\"03042b918b6bcc6690d1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":95.74123989218329,\"y\":333.80053908355796,\"z\":1000,\"width\":396.7654986522911,\"height\":342.4258760107817,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Y\":[{\"queryRef\":\"ORDERS.Total Price O\"}],\"Category\":[{\"queryRef\":\"ORDERS.O_ORDERDATE\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"o\",\"Entity\":\"ORDERS\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"Total Price O\"},\"Name\":\"ORDERS.Total Price O\",\"NativeReferenceName\":\"Total Price O\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"O_ORDERDATE\"},\"Name\":\"ORDERS.O_ORDERDATE\",\"NativeReferenceName\":\"O_ORDERDATE\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"o\"}},\"Property\":\"O_ORDERDATE\"}}}]},\"autoSelectVisualType\":false,\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
           "height": 342.43,
           "width": 396.77,
           "x": 95.74,
           "y": 333.80,
-          "z": 1.00
+          "z": 1000.00
         },
         {
           "config": "{\"name\":\"45f6774694ebad323e80\",\"layouts\":[{\"id\":0,\"position\":{\"width\":381,\"height\":240,\"x\":838,\"y\":420,\"tabOrder\":0,\"z\":0}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Category\":[{\"queryRef\":\"LINEITEM.L_LINESTATUS\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(LINEITEM.L_QUANTITY)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"LINEITEM\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_LINESTATUS\"},\"Name\":\"LINEITEM.L_LINESTATUS\",\"NativeReferenceName\":\"L_LINESTATUS\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_QUANTITY\"}},\"Function\":0},\"Name\":\"Sum(LINEITEM.L_QUANTITY)\",\"NativeReferenceName\":\"Sum of L_QUANTITY\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"L_QUANTITY\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}]},\"vcObjects\":{}},\"howCreated\":\"Copilot\"}",
@@ -283,6 +291,17 @@
           "z": 0.00
         }
       ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 3",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "d6ad53f8108ac960300a",
+      "ordinal": 5,
+      "visualContainers": [],
       "width": 1280.00
     }
   ]
