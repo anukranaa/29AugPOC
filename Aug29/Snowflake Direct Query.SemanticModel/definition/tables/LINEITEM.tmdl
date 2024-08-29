@@ -1,0 +1,216 @@
+table LINEITEM
+	lineageTag: 1bde5622-9485-44a6-98d0-3c14bfcdb02a
+
+	measure 'Total Revenue' = ```
+			
+			SUMX(
+			    FILTER(
+			        VALUES('orders'[o_orderkey]),
+			        CALCULATE(
+			            MAX('orders'[o_orderdate]) < DATE(1995, 3, 15)
+			        )
+			    ),
+			    VAR OrderKey = 'orders'[o_orderkey]
+			    RETURN
+			        CALCULATE(
+			            SUMX(
+			                FILTER(
+			                    'lineitem',
+			                    'lineitem'[l_orderkey] = OrderKey &&
+			                    'lineitem'[l_shipdate] > DATE(1995, 3, 15)
+			                ),
+			                'lineitem'[l_extendedprice] * (1 - 'lineitem'[l_discount])
+			            ),
+			            ALLEXCEPT('orders', 'orders'[o_orderkey])
+			        )
+			)
+			
+			```
+		lineageTag: 944ddfaa-88b7-47bd-83d9-b86ee2aa2895
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_ORDERKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: acbaf577-f61c-4b93-9781-f676dbf783b2
+		summarizeBy: none
+		sourceColumn: L_ORDERKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_PARTKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 356f6bd3-9d2b-4425-a781-0a1badcdcd6a
+		summarizeBy: sum
+		sourceColumn: L_PARTKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_SUPPKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 7ba031b1-e665-4b7b-a736-d017dcb42fdf
+		summarizeBy: none
+		sourceColumn: L_SUPPKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_LINENUMBER
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 6b774682-97b9-4e63-aff3-71e3d5fa5ce4
+		summarizeBy: sum
+		sourceColumn: L_LINENUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_QUANTITY
+		dataType: double
+		sourceProviderType: decimal(12, 2)
+		lineageTag: 6d6729ca-9431-4559-a131-ca234040f373
+		summarizeBy: sum
+		sourceColumn: L_QUANTITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_EXTENDEDPRICE
+		dataType: double
+		sourceProviderType: decimal(12, 2)
+		lineageTag: 6fe79ae2-0b4b-457a-b26f-b9c4c703876b
+		summarizeBy: sum
+		sourceColumn: L_EXTENDEDPRICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_DISCOUNT
+		dataType: double
+		sourceProviderType: decimal(12, 2)
+		lineageTag: dd4fe377-6b84-4482-85dd-6296a450873e
+		summarizeBy: sum
+		sourceColumn: L_DISCOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_TAX
+		dataType: double
+		sourceProviderType: decimal(12, 2)
+		lineageTag: a2cce44a-9f9b-4d14-8f37-afbaf2bab409
+		summarizeBy: sum
+		sourceColumn: L_TAX
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column L_RETURNFLAG
+		dataType: string
+		sourceProviderType: nvarchar(1)
+		lineageTag: 946e8633-e39a-4485-8ef8-c54d696b081c
+		summarizeBy: none
+		sourceColumn: L_RETURNFLAG
+
+		annotation SummarizationSetBy = Automatic
+
+	column L_LINESTATUS
+		dataType: string
+		sourceProviderType: nvarchar(1)
+		lineageTag: f2500227-33cb-4953-9fe0-e5beb584e4d1
+		summarizeBy: none
+		sourceColumn: L_LINESTATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column L_SHIPDATE
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: c46acc33-2ae2-4c3f-afe5-5781834cb697
+		summarizeBy: none
+		sourceColumn: L_SHIPDATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column L_COMMITDATE
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 69c7081c-ba24-43e7-8275-79f521b43faa
+		summarizeBy: none
+		sourceColumn: L_COMMITDATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column L_RECEIPTDATE
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 90552615-7f02-417e-b3d1-51ec6ffb9402
+		summarizeBy: none
+		sourceColumn: L_RECEIPTDATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column L_SHIPINSTRUCT
+		dataType: string
+		sourceProviderType: nvarchar(25)
+		lineageTag: 62398564-f0b9-4a01-9973-b00e0cae4d92
+		summarizeBy: none
+		sourceColumn: L_SHIPINSTRUCT
+
+		annotation SummarizationSetBy = Automatic
+
+	column L_SHIPMODE
+		dataType: string
+		sourceProviderType: nvarchar(10)
+		lineageTag: 61423bfc-5904-4d9c-a73c-64d096238bed
+		summarizeBy: none
+		sourceColumn: L_SHIPMODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column L_COMMENT
+		dataType: string
+		sourceProviderType: nvarchar(44)
+		lineageTag: 5585ef99-cf09-4496-96c2-582c2b4b7c30
+		summarizeBy: none
+		sourceColumn: L_COMMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition LINEITEM = m
+		mode: directQuery
+		source =
+				let
+				    Source = Snowflake.Databases("xb96395.west-us-2.azure.snowflakecomputing.com","Public_WH"),
+				    SNOWFLAKE_MIRRORING_DEMO_Database = Source{[Name="SNOWFLAKE_MIRRORING_DEMO",Kind="Database"]}[Data],
+				    SALES_Schema = SNOWFLAKE_MIRRORING_DEMO_Database{[Name="SALES",Kind="Schema"]}[Data],
+				    LINEITEM_Table = SALES_Schema{[Name="LINEITEM",Kind="Table"]}[Data]
+				in
+				    LINEITEM_Table
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,85 @@
+table SUPPLIER
+	lineageTag: 4ddafba7-2748-4b2d-b75d-0f7c7f66a07f
+
+	column S_SUPPKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 52708eb7-9eaa-4d40-8de3-4135460746aa
+		summarizeBy: none
+		sourceColumn: S_SUPPKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S_NAME
+		dataType: string
+		sourceProviderType: nvarchar(25)
+		lineageTag: 264f2881-b56e-43df-ae17-4bdc7f819353
+		summarizeBy: none
+		sourceColumn: S_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column S_ADDRESS
+		dataType: string
+		sourceProviderType: nvarchar(40)
+		lineageTag: a741d600-9034-49e6-b123-829644edd1d6
+		summarizeBy: none
+		sourceColumn: S_ADDRESS
+
+		annotation SummarizationSetBy = Automatic
+
+	column S_NATIONKEY
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 8a66a5df-cc30-4574-837e-fdf5ba5da39e
+		summarizeBy: sum
+		sourceColumn: S_NATIONKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S_PHONE
+		dataType: string
+		sourceProviderType: nvarchar(15)
+		lineageTag: 04930376-ce2f-4a2e-8196-f848944fa280
+		summarizeBy: none
+		sourceColumn: S_PHONE
+
+		annotation SummarizationSetBy = Automatic
+
+	column S_ACCTBAL
+		dataType: double
+		sourceProviderType: decimal(12, 2)
+		lineageTag: 980911a6-5e05-4fef-ac48-4e030f477c3f
+		summarizeBy: sum
+		sourceColumn: S_ACCTBAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S_COMMENT
+		dataType: string
+		sourceProviderType: nvarchar(101)
+		lineageTag: c5b6f5a0-662d-4e14-98e1-401b4d52d332
+		summarizeBy: none
+		sourceColumn: S_COMMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SUPPLIER = m
+		mode: directQuery
+		source =
+				let
+				    Source = Snowflake.Databases("xb96395.west-us-2.azure.snowflakecomputing.com","Public_WH"),
+				    SNOWFLAKE_MIRRORING_DEMO_Database = Source{[Name="SNOWFLAKE_MIRRORING_DEMO",Kind="Database"]}[Data],
+				    SALES_Schema = SNOWFLAKE_MIRRORING_DEMO_Database{[Name="SALES",Kind="Schema"]}[Data],
+				    SUPPLIER_Table = SALES_Schema{[Name="SUPPLIER",Kind="Table"]}[Data]
+				in
+				    SUPPLIER_Table
+
+	annotation PBI_ResultType = Table
+
